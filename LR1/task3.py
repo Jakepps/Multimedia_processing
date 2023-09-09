@@ -1,7 +1,8 @@
 import cv2
 
 def readIPWriteTOFile():
-    video = cv2.VideoCapture(0)
+    video = cv2.VideoCapture(r'.\LR1\video.mp4', cv2.CAP_ANY)
+    #video = cv2.VideoCapture(0)
     ok, img = video.read()
     w = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
