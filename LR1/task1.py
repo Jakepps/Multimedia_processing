@@ -1,8 +1,8 @@
 import cv2
 
-img1 = cv2.imread(r'C:\Users\jakep\GitHub\MultiMedia\LR1\img1.jpg',cv2.IMREAD_GRAYSCALE)
-img2 = cv2.imread(r'C:\Users\jakep\GitHub\MultiMedia\LR1\img2.png',cv2.IMREAD_REDUCED_COLOR_8)
-img3 = cv2.imread(r'C:\Users\jakep\GitHub\MultiMedia\LR1\img3.bmp',cv2.IMREAD_ANYDEPTH)
+img1 = cv2.imread(r'.\LR1\img1.jpg',cv2.IMREAD_GRAYSCALE)
+img2 = cv2.imread(r'.\LR1\img2.png',cv2.IMREAD_REDUCED_COLOR_8)
+img3 = cv2.imread(r'.\LR1\img3.bmp',cv2.IMREAD_ANYDEPTH)
 cv2.namedWindow('gosling', cv2.WINDOW_NORMAL)
 cv2.namedWindow('ghost', cv2.WINDOW_NORMAL)
 cv2.namedWindow('nature', cv2.WINDOW_NORMAL)
