@@ -24,7 +24,7 @@ while True:
     cv2.rectangle(cross_image,
                   (width // 2 - horizontal_line_width // 2, height // 2 - horizontal_line_height // 2),
                   (width // 2 + horizontal_line_width // 2, height // 2 + horizontal_line_height // 2),
-                  (0, 0, 255), -1)
+                  (0, 0, 255), 2)
 
     result_frame = cv2.addWeighted(frame, 1, cross_image, 0.5, 0)
 
