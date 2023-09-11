@@ -2,18 +2,25 @@ import cv2
 
 def readIPWriteTOFile():
     video = cv2.VideoCapture(0)
-    ok, img = video.read()
+    ok, vid = video.read()
+
     w = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    video_writer = cv2.VideoWriter("output_webcam.mp4", fourcc, 25, (w, h))
+
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    video_writer = cv2.VideoWriter("./LR1/Output/output_webcam7.mp4", fourcc, 25, (w, h))
+
     while (True):
-        ok, img = video.read()
-        cv2.imshow('img', img)
-        video_writer.write(img)
+        ok, vid = video.read()
+
+        cv2.imshow('Video', vid)
+        video_writer.write(vid)
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
     video.release()
+    video_writer.release()
     cv2.destroyAllWindows()
 
 readIPWriteTOFile()

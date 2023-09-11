@@ -1,18 +1,26 @@
 import cv2
 
-def print_cam():
-    cap = cv2.VideoCapture(0)
-    cap.set(3, 640)
-    cap.set(4, 480)
-    while True:
-        ret, frame = cap.read()
+def readIPWriteTOFile():
+    video = cv2.VideoCapture(r'.\LR1\source\video.mp4', cv2.CAP_ANY)
+    ok, vid = video.read()
 
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    w = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+    h = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-        cv2.imshow('frame', gray)
-        if cv2.waitKey(1) & 0xFF == 27:
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    video_writer = cv2.VideoWriter("./LR1/Output/output3.mp4", fourcc, 25, (w, h))
+
+    while (True):
+        ok, vid = video.read()
+
+        cv2.imshow('Video', vid)
+        video_writer.write(vid)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    cap.release()
+
+    video.release()
+    video_writer.release()
     cv2.destroyAllWindows()
 
-print_cam()
+readIPWriteTOFile()

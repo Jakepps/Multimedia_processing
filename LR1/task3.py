@@ -1,19 +1,21 @@
 import cv2
 
-def readIPWriteTOFile():
-    video = cv2.VideoCapture(r'.\LR1\video.mp4', cv2.CAP_ANY)
-    img = video.read()
-    w = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
-    h = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    video_writer = cv2.VideoWriter("output.mp4", fourcc, 25, (w, h))
-    while (True):
-        img = video.read()
-        cv2.imshow('img', img)
-        video_writer.write(img)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    video.release()
-    cv2.destroyAllWindows()
+cap = cv2.VideoCapture(r'.\LR1\source\video.mp4', cv2.CAP_ANY)
 
-readIPWriteTOFile()
+new_width = 640
+new_height = 480
+
+while True:
+    ret, frame = cap.read()
+
+    if not ret:
+        exit()
+
+    frame = cv2.resize(frame, (new_width, new_height))
+
+    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    cv2.imshow('Video', gray_frame)
+
+    if cv2.waitKey(1) & 0xFF == 27:
+        exit()
