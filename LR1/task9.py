@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import imutils
 
-url = "http://192.168.0.179:8080/shot.jpg"
+url = "http://192.168.232.149:8080/shot.jpg"
 
 while True:
     img_resp = requests.get(url)

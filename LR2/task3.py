@@ -15,8 +15,14 @@ while True:
     opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
     closing = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
 
+    erosion = cv2.erode(mask, kernel, iterations = 1)
+    dilation = cv2.dilate(mask, kernel, iterations = 1)
+
+    cv2.imshow("Erosion", erosion)
+    cv2.imshow("Dilation", dilation)
     cv2.imshow("Opening", opening)
     cv2.imshow("Closing", closing)
+
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

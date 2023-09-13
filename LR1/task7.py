@@ -1,7 +1,9 @@
 import cv2
 
+video = cv2.VideoCapture(0)
+
 def readIPWriteTOFile():
-    video = cv2.VideoCapture(0)
+
     ok, vid = video.read()
 
     w = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
