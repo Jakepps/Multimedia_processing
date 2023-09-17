@@ -1,7 +1,7 @@
 import cv2
 
-img1 = cv2.imread(r'.\LR1\source\img2.png')
-img2 = cv2.imread(r'.\LR1\source\img2.png')
+img1 = cv2.imread(r'.\source\img2.png')
+img2 = cv2.imread(r'.\source\img2.png')
 
 cv2.namedWindow('ghost', cv2.WINDOW_NORMAL)
 cv2.namedWindow('ghost_hsv', cv2.WINDOW_NORMAL)

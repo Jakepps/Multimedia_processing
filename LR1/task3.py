@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture(r'.\LR1\source\video.mp4', cv2.CAP_ANY)
+cap = cv2.VideoCapture(r'.\source\video.mp4', cv2.CAP_ANY)
 
 new_width = 640
 new_height = 480
