@@ -1,14 +1,14 @@
 import cv2
 
 def readIPWriteTOFile():
-    video = cv2.VideoCapture(r'.\LR1\source\video.mp4', cv2.CAP_ANY)
+    video = cv2.VideoCapture(r'.\source\video.mp4', cv2.CAP_ANY)
     ok, vid = video.read()
 
     w = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    video_writer = cv2.VideoWriter("./LR1/Output/output3.mp4", fourcc, 25, (w, h))
+    video_writer = cv2.VideoWriter("./Output/output3.mp4", fourcc, 25, (w, h))
 
     while (True):
         ok, vid = video.read()

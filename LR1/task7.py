@@ -10,7 +10,7 @@ def readIPWriteTOFile():
     h = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    video_writer = cv2.VideoWriter("./LR1/Output/output_webcam7.mp4", fourcc, 25, (w, h))
+    video_writer = cv2.VideoWriter("./Output/output_webcam7.mp4", fourcc, 25, (w, h))
 
     while (True):
         ok, vid = video.read()
