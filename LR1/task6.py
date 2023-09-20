@@ -8,25 +8,19 @@ while True:
     if not ret:
         break
 
-    height, width, _ = frame.shape
+    pointsUp = np.array([[280, 80], [360, 80], [320, 300]])
+    pointsLeft = np.array([[180, 200], [180, 280], [360, 240]])
+    pointsDown = np.array([[280, 420], [360, 420], [320, 200]])
+    pointsRight = np.array([[460, 200], [460, 280], [260, 240]])
 
-    cross_image = np.zeros((height, width, 3), dtype=np.uint8)
+    result_frame = cv2.addWeighted(frame, 1, frame, 0.5, 0)
 
-    vertical_line_width = 60
-    vertical_line_height = 300
-    cv2.rectangle(cross_image,
-                  (width // 2 - vertical_line_width // 2, height // 2 - vertical_line_height // 2),
-                  (width // 2 + vertical_line_width // 2, height // 2 + vertical_line_height // 2),
-                  (0, 0, 255), 2)
+    cv2.fillPoly(result_frame, pts=[pointsUp], color=(255, 0, 0))
+    cv2.fillPoly(result_frame, pts=[pointsLeft], color=(255, 0, 0))
+    cv2.fillPoly(result_frame, pts=[pointsDown], color=(255, 0,0))
+    cv2.fillPoly(result_frame, pts=[pointsRight], color=(255, 0, 0))
 
-    horizontal_line_width = 250
-    horizontal_line_height = 55
-    cv2.rectangle(cross_image,
-                  (width // 2 - horizontal_line_width // 2, height // 2 - horizontal_line_height // 2),
-                  (width // 2 + horizontal_line_width // 2, height // 2 + horizontal_line_height // 2),
-                  (0, 0, 255), 2)
-
-    result_frame = cv2.addWeighted(frame, 1, cross_image, 0.5, 0)
+    result_frame = cv2.addWeighted(frame, 1, result_frame, 0.5, 0)
 
     cv2.imshow("Red Cross", result_frame)
 

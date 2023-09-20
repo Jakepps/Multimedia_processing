@@ -15,8 +15,10 @@ while True:
 
     image_opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
     image_closing = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+
     cv2.imshow("Open", image_opening)
     cv2.imshow("Close", image_closing)
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
@@ -35,7 +37,7 @@ def erode(image, kernel):
         for j in range(hkn, n - hkn):
             eroded[i, j] = np.min(
                 image[i - hkm:i + hkm + 1, j - hkn:j + hkn + 1][kernel == 1])
-
+                # это срез (slice) изображения вокруг пикселя (i, j) с использованием размеров ядра kernel
     return eroded
 
 

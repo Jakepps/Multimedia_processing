@@ -19,8 +19,8 @@ while True:
         c_x = int(moments["m10"] / moments["m00"])
         c_y = int(moments["m01"] / moments["m00"])
         cv2.rectangle(frame,
-            (c_x - (width // 8), c_y - (height // 8)),
-            (c_x + (width // 8), c_y + (height // 8)),
+            (c_x - (width // 12), c_y - (height // 12)),
+            (c_x + (width // 12), c_y + (height // 12)),
             (0, 0, 0), 2)
 
     cv2.imshow('Rectanle_frame', frame)
