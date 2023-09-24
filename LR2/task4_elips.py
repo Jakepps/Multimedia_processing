@@ -16,14 +16,18 @@ while True:
 
     if area > 0:
         width = height = int(np.sqrt(area))
+
         c_x = int(moments["m10"] / moments["m00"])
         c_y = int(moments["m01"] / moments["m00"])
-        cv2.rectangle(frame,
-            (c_x - (width // 16), c_y - (height // 16)),
-            (c_x + (width // 16), c_y + (height // 16)),
-            (0, 0, 0), 2)
 
-    cv2.imshow('Rectanle_frame', frame)
+        cv2.ellipse(frame,
+            (c_x, c_y),
+            (width // 16, height // 16),
+            0,  # угол поворота эллипса
+            0, 360, # начальный и конечный угол дуги
+            (255, 0, 0), 2)
+
+    cv2.imshow('Ellipse_frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

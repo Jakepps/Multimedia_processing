@@ -7,7 +7,7 @@ while True:
     ret, frame = cap.read()
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    lower_red = np.array([0, 100, 100])
+    lower_red = np.array([0, 120, 220])
     upper_red = np.array([10, 255, 255])
     mask = cv2.inRange(hsv, lower_red, upper_red)
 
@@ -37,7 +37,7 @@ def erode(image, kernel):
         for j in range(hkn, n - hkn):
             eroded[i, j] = np.min(
                 image[i - hkm:i + hkm + 1, j - hkn:j + hkn + 1][kernel == 1])
-                # это срез (slice) изображения вокруг пикселя (i, j) с использованием размеров ядра kernel
+                # это срез изображения вокруг пикселя (i, j) с использованием размеров ядра kernel
     return eroded
 
 

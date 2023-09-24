@@ -11,9 +11,9 @@ while True:
     upper_red = np.array([10, 255, 255])
 
     mask = cv2.inRange(hsv, lower_red, upper_red)
-    red_filtered_frame = cv2.bitwise_and(frame, frame, mask = mask)
+    onlyRed_frame = cv2.bitwise_and(frame, frame, mask = mask)
 
-    cv2.imshow('Red Filtered Image', red_filtered_frame)
+    cv2.imshow('Red Filtered Image', onlyRed_frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
