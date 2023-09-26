@@ -3,20 +3,20 @@ import numpy as np
 
 
 def BlurFuss():
-    # 1 - cтроим матрицу, задаём значения и картинку
     img = cv2.imread("test.jpg", cv2.IMREAD_GRAYSCALE)
 
-    # Cтандартное отклонение и размер ядра фильтра
-    standard_deviation = 100
+    #  размер ядра фильтра и стандартное отклонение
     kernel_size = 5
+    standard_deviation = 100
 
-    imgBlur1 = GaussianBlur(img, kernel_size, standard_deviation)
+    imgBlur1 = GaussBlur(img, kernel_size, standard_deviation)
     cv2.imshow(str(kernel_size) + 'x' + str(kernel_size) + ' and deviation ' + str(standard_deviation), imgBlur1)
 
-    # 4 - другие параметры
-    standard_deviation = 50
+    #другие параметры
     kernel_size = 11
-    imgBlur2 = GaussianBlur(img, kernel_size, standard_deviation)
+    standard_deviation = 50
+
+    imgBlur2 = GaussBlur(img, kernel_size, standard_deviation)
     cv2.imshow(str(kernel_size)+'x'+str(kernel_size) + ' and deviation ' + str(standard_deviation), imgBlur2)
 
     imgBlurOpenCV = cv2.GaussianBlur(img, (kernel_size, kernel_size), standard_deviation)
@@ -25,7 +25,7 @@ def BlurFuss():
     cv2.imshow('OpenCV_blur', imgBlurOpenCV)
     cv2.waitKey(0)
 
-def GaussianBlur(img, kernel_size, standard_deviation):
+def GaussBlur(img, kernel_size, standard_deviation):
     kernel = np.ones((kernel_size, kernel_size))
     a = b = (kernel_size + 1) // 2
 
@@ -35,20 +35,21 @@ def GaussianBlur(img, kernel_size, standard_deviation):
             kernel[i, j] = gauss(i, j, standard_deviation, a, b)
 
     print(kernel)
-
-    # 2 - нормализуем для сохранения яркости изображения (сумма всех элементов должна быть = 1)
+    print("//////////")
+    # 2 - нормализуем для сохранения яркости изображения
     sum = 0
     for i in range(kernel_size):
         for j in range(kernel_size):
             sum += kernel[i, j]
+
     for i in range(kernel_size):
         for j in range(kernel_size):
             kernel[i, j] /= sum
 
     print(kernel)
 
-    # 3 - проходим через внутренние пиксели изображения и выполняем операцию свертки между изображением и ядром.
-    # каждый пиксель изображения умножается на соответствующее значение в ядре, а затем суммируется
+    # проходим через внутренние пиксели изображения и выполняем операцию свертки между изображением и ядром.
+    # Каждый пиксель изображения умножается на соответствующее значение в ядре, а затем суммируется
     imgBlur = img.copy()
     x_start = kernel_size // 2
     y_start = kernel_size // 2
@@ -63,11 +64,13 @@ def GaussianBlur(img, kernel_size, standard_deviation):
 
     return imgBlur
 
-        #коорд.пикселя, станд.откл, координаты центра ядра
+# коорд.пикселя, станд.откл, координаты центра ядра
 def gauss(x, y, omega, a, b):
     omega2 = 2 * omega ** 2
+
     m1 = 1 / (np.pi * omega2)
     m2 = np.exp(-((x-a) ** 2 + (y-b) ** 2) / omega2)
+
     return m1 * m2
 
 BlurFuss()

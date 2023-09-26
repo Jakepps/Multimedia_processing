@@ -37,7 +37,7 @@ def erode(image, kernel):
         for j in range(hkn, n - hkn):
             eroded[i, j] = np.min(
                 image[i - hkm:i + hkm + 1, j - hkn:j + hkn + 1][kernel == 1])
-                # это срез изображения вокруг пикселя (i, j) с использованием размеров ядра kernel
+                # это срез изображения вокруг пикселя (i, j) с использованием размеров ядра
     return eroded
 
 
