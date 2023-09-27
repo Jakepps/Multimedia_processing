@@ -11,23 +11,14 @@ while True:
     upper_red = np.array([10, 255, 255])
     mask = cv2.inRange(hsv, lower_red, upper_red)
 
-    moments = cv2.moments(mask)
-    area = moments['m00']
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    if area > 0:
-        width = height = int(np.sqrt(area))
+    for contour in contours:
+        if cv2.contourArea(contour) > 300: 
+            ellipse = cv2.fitEllipse(contour)
+            cv2.ellipse(frame, ellipse, (0, 0, 0), 4)
 
-        c_x = int(moments["m10"] / moments["m00"])
-        c_y = int(moments["m01"] / moments["m00"])
-
-        cv2.ellipse(frame,
-            (c_x, c_y),
-            (width // 16, height // 16),
-            0,  # угол поворота эллипса
-            0, 360, # начальный и конечный угол дуги
-            (0, 0, 0), 2)
-
-    cv2.imshow('Ellipse_frame', frame)
+    cv2.imshow('Ellipses_frame', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

@@ -10,14 +10,16 @@ def BlurFuss():
     standard_deviation = 100
 
     imgBlur1 = GaussBlur(img, kernel_size, standard_deviation)
-    cv2.imshow(str(kernel_size) + 'x' + str(kernel_size) + ' and deviation ' + str(standard_deviation), imgBlur1)
+    imgWithNoise1 = addGaussianNoise(imgBlur1, mean=0, std=25)
+    cv2.imshow(str(kernel_size) + 'x' + str(kernel_size) + ' and deviation ' + str(standard_deviation), imgWithNoise1)
 
-    #другие параметры
+    # другие параметры
     kernel_size = 11
     standard_deviation = 50
 
     imgBlur2 = GaussBlur(img, kernel_size, standard_deviation)
-    cv2.imshow(str(kernel_size)+'x'+str(kernel_size) + ' and deviation ' + str(standard_deviation), imgBlur2)
+    imgWithNoise2 = addGaussianNoise(imgBlur2, mean=0, std=25)
+    cv2.imshow(str(kernel_size)+'x'+str(kernel_size) + ' and deviation ' + str(standard_deviation), imgWithNoise2)
 
     imgBlurOpenCV = cv2.GaussianBlur(img, (kernel_size, kernel_size), standard_deviation)
 
@@ -36,7 +38,7 @@ def GaussBlur(img, kernel_size, standard_deviation):
 
     print(kernel)
     print("//////////")
-    # 2 - нормализуем для сохранения яркости изображения
+    # нормализуем для сохранения яркости изображения
     sum = 0
     for i in range(kernel_size):
         for j in range(kernel_size):
@@ -72,5 +74,13 @@ def gauss(x, y, omega, a, b):
     m2 = np.exp(-((x-a) ** 2 + (y-b) ** 2) / omega2)
 
     return m1 * m2
+
+def addGaussianNoise(image, mean=0, std=25):
+    height, width = image.shape
+
+    gauss_noise = np.random.normal(mean, std, (height, width))
+    noisy_image = np.clip(image + gauss_noise, 0, 255).astype(np.uint8)
+    
+    return noisy_image
 
 BlurFuss()
