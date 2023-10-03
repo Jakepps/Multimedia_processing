@@ -4,14 +4,18 @@ import numpy as np
 
 def svertka(img, kernel):
     kernel_size = len(kernel)
+
     x_start = kernel_size // 2
     y_start = kernel_size // 2
+
     matr = np.zeros(img.shape)
 
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
             matr[i][j] = img[i][j]
 
+    # проходим через внутренние пиксели изображения и выполняем операцию свертки между изображением и ядром.
+    # Каждый пиксель изображения умножается на соответствующее значение в ядре, а затем суммируется
     for i in range(x_start, len(matr)-x_start):
         for j in range(y_start, len(matr[i])-y_start):
 
@@ -91,6 +95,7 @@ def main(path, standard_deviation, kernel_size, bound_path):
             matr_gradient[i][j] = np.sqrt(img_Gx[i][j] ** 2 + img_Gy[i][j] ** 2)
 
     #углы градиента для каждого пикселя
+    #каждый пиксель заменяется на значение угла градиента в соответствии с его градиентами по горизонтали и вертикали.
     img_angles = img.copy()
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -178,5 +183,5 @@ def main(path, standard_deviation, kernel_size, bound_path):
 
 # 5
 main('test.jpg', 10, 3, 15)
-main('test.jpg', 20, 10, 6)
-main('test.jpg', 100, 16, 15)
+main('test.jpg', 10, 3, 6)
+main('test.jpg', 100, 11, 15)
