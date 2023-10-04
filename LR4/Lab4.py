@@ -64,11 +64,11 @@ def get_angle_number(x, y):
                 return 4
 
 
-i = 0
+index = 0
 
 def main(path, standard_deviation, kernel_size, bound_path):
-    global i
-    i += 1
+    global index
+    index += 1
 
     # 1
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
@@ -108,13 +108,13 @@ def main(path, standard_deviation, kernel_size, bound_path):
         for j in range(img.shape[1]):
             #нормализация значения градиента относительно макс значения и масшабирования в диапозоне от 0 до 255
             img_gradient_to_print[i][j] = (float(matr_gradient[i][j]) / max_gradient) * 255
-    cv2.imshow('img gradient to print ' + str(i), img_gradient_to_print)
+    cv2.imshow('img gradient to print ' + str(index), img_gradient_to_print)
 
     img_angles_to_print = img.copy()
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
             img_angles_to_print[i][j] = img_angles[i][j] / 7 * 255
-    cv2.imshow('img angles to print ' + str(i), img_angles_to_print)
+    cv2.imshow('img angles to print ' + str(index), img_angles_to_print)
 
     # 3
     img_border_no_filter = img.copy()
@@ -146,7 +146,7 @@ def main(path, standard_deviation, kernel_size, bound_path):
                 is_max = gradient >= matr_gradient[i + y_shift][j + x_shift] and gradient >= matr_gradient[i-y_shift][j-x_shift]
                 img_border_no_filter[i][j] = 255 if is_max else 0
 
-    cv2.imshow('img border no filter ' + str(i), img_border_no_filter)
+    cv2.imshow('img border no filter ' + str(index), img_border_no_filter)
 
     # 4
     #для понимания когда лок максимум градиента будут считаться границами
@@ -174,7 +174,7 @@ def main(path, standard_deviation, kernel_size, bound_path):
                 elif (gradient > upper_bound):
                     img_border_filter[i][j] = 255
 
-    cv2.imshow('img border filter ' + str(i), img_border_filter)
+    cv2.imshow('img border filter ' + str(index), img_border_filter)
 
     while True:
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -183,5 +183,5 @@ def main(path, standard_deviation, kernel_size, bound_path):
 
 # 5
 main('test.jpg', 10, 3, 15)
-main('test.jpg', 10, 3, 6)
-main('test.jpg', 100, 11, 15)
+# main('test.jpg', 10, 3, 6)
+# main('test.jpg', 100, 11, 15)

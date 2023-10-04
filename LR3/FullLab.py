@@ -19,11 +19,11 @@ def BlurFuss():
 
     imgBlur2 = GaussBlur(img, kernel_size, standard_deviation)
     imgWithNoise2 = addGaussianNoise(imgBlur2, mean = 0, standard_deviation = 10)
-    cv2.imshow(str(kernel_size)+'x'+str(kernel_size) + ' and deviation ' + str(standard_deviation), imgWithNoise2)
+    #cv2.imshow(str(kernel_size)+'x'+str(kernel_size) + ' and deviation ' + str(standard_deviation), imgWithNoise2)
 
     imgBlurOpenCV = cv2.GaussianBlur(img, (kernel_size, kernel_size), standard_deviation)
 
-    #cv2.imshow('img', img)
+    cv2.imshow('img', img)
     #cv2.imshow('OpenCV_blur', imgBlurOpenCV)
     cv2.waitKey(0)
 
