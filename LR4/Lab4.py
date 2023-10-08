@@ -182,6 +182,6 @@ def main(path, standard_deviation, kernel_size, bound_path):
 
 
 # 5
-main('test.jpg', 10, 3, 15)
-# main('test.jpg', 10, 3, 6)
-# main('test.jpg', 100, 11, 15)
+#main('test.jpg', 10, 3, 15)
+main('test.jpg', 6, 5, 6)
+#main('test.jpg', 100, 11, 15)
