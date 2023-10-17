@@ -42,9 +42,9 @@ optimizer = Adam(learning_rate=0.001)
 # компилируем модель с помощью оптимизатора Adam и категориальной функции потери перекрестной энтропии
 model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
-# обучаем модель за 2 эпохи
+# обучаем модель за 3 эпохи
 # обновления весов модели происходят после каждых 128 образцов
-model.fit(x_train, y_train, epochs=2, batch_size=128)
+model.fit(x_train, y_train, epochs=3, batch_size=128)
 
 # оцениваем точность модели на основе тестовых данных
 accuracy = model.evaluate(x_test,y_test)

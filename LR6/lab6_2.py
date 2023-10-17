@@ -4,7 +4,7 @@ import numpy as np
 
 model = load_model("my_model.keras")
 
-image_path ="5.jpg"
+image_path ="img/7.jpg"
 img_cv = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 img_cv = cv2.resize(img_cv, (28, 28))
 
