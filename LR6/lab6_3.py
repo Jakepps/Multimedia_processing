@@ -2,6 +2,7 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from keras.utils import to_categorical
 from keras.datasets import mnist
 from keras.models import Sequential
+from keras.optimizers import Adam
 
 # Загрузка данных MNIST и предобработка
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -38,7 +39,8 @@ model.add(Dense(128, activation='relu'))
 model.add(Dense(10, activation='softmax'))  
 
 # Компиляция модели
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+optimizer = Adam(learning_rate=0.001)
+model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Модель обучается на тренировочных данных в течение 3 эпох с батч-размером 128
 model.fit(x_train, y_train, epochs=3, batch_size=128, validation_data=(x_test, y_test)) 
