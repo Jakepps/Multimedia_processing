@@ -2,6 +2,7 @@ import tensorflow as tf
 from keras.models import load_model
 from keras.datasets import mnist
 from keras.utils import to_categorical
+import time
 
 model = load_model("my_model.keras")
 
@@ -39,13 +40,17 @@ for epochs in epochs_list:
                                   metrics=['accuracy'])
 
             # Обучение модели
+            start_time = time.time()
             layered_model.fit(train_images_flat, train_labels, epochs=epochs, batch_size=128, verbose=0)
+            end_time = time.time()
+            test_time = end_time - start_time
 
             # Оценка модели на тестовых данных
             test_loss, test_accuracy = layered_model.evaluate(test_images_flat, test_labels, verbose=0)
 
             # Добавление параметров в список accuracies
-            accuracies.append((epochs, lr, num_layers, test_accuracy))
+            accuracies.append((epochs, lr, num_layers, test_accuracy, test_time))
 
-for epochs, lr, num_layers, accuracy in accuracies:
-    print(f'Эпохи: {epochs}, Скорость обучения: {lr}, Количество слоев: {num_layers}, Точность на тесте: {round(accuracy, 2)*100}%')
+for epochs, lr, num_layers, accuracy, t_time in accuracies:
+    print(f'Эпохи: {epochs}, Скорость обучения: {lr}, Количество слоев: {num_layers}, Точность на тесте: {round(accuracy, 2)*100}%, Затраченное время: {round(t_time, 2)} сек.')
+ 
