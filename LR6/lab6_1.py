@@ -6,6 +6,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation
 from keras.utils import to_categorical
 from keras.optimizers import Adam
+from keras.callbacks import TensorBoard
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -44,7 +45,11 @@ model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['ac
 
 # обучаем модель за 3 эпохи
 # обновления весов модели происходят после каждых 128 образцов
-model.fit(x_train, y_train, epochs=3, batch_size=128)
+# tensorboard --logdir=./logs
+tensorboard_callback = TensorBoard(log_dir='./logs', histogram_freq=1, write_graph=True, write_images=True)
+model.fit(x_train, y_train, epochs=3, batch_size=128, callbacks=[tensorboard_callback])
+
+#model.fit(x_train, y_train, epochs=3, batch_size=128)
 
 # оцениваем точность модели на основе тестовых данных
 accuracy = model.evaluate(x_test,y_test)
