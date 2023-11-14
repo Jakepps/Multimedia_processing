@@ -1,0 +1,6 @@
+dataset/1.jpg: Hello, how are you
+dataset/2.jpg: Hello
+dataset/3.jpg: Beautiful
+dataset/4.jpg: Red book
+dataset/5.jpg: Pencil
+dataset/6.jpg: My name is Artem
