@@ -70,7 +70,6 @@ class ImageRecognizer:
         else:
             raise ValueError(f"Unsupported recognition type: {rec_type}")
 
-        # Загрузите основную истину из файла аннотации
         ground_truth = {}
         with open(ground_truth_file, 'r') as file:
             for line in file:
@@ -79,12 +78,11 @@ class ImageRecognizer:
                 true_text = parts[1].strip()
                 ground_truth[image_path] = true_text
 
-        # Оценить точность на основе указанного типа проверки
+        # Оцениваем точность на основе указанного типа проверки
         if val_type == 'full_match':
             accuracy = self.evaluate_accuracy(ground_truth, predictions)
-        # Добавляйте дополнительные типы проверки по мере необходимости
 
-        # Сохранить прогнозы в файл
+        # Сохраняем прогнозы в файл
         predictions_file = f'{rec_type}_predictions.txt'
         with open(predictions_file, 'w') as file:
             for image_path, prediction in predictions.items():
@@ -94,7 +92,7 @@ class ImageRecognizer:
 
 # СРАВНИВАЕМ ПОСЛОВНО
     def compare_predictions(self, ground_truth_file, straight_predictions_file, easyocr_predictions_file):
-        # Загрузка истинной информации из файла аннотации
+        # Загружаем истинной информации из файла аннотации
         ground_truth = {}
         with open(ground_truth_file, 'r') as file:
             for line in file:
@@ -103,7 +101,7 @@ class ImageRecognizer:
                 true_text = parts[1].strip()
                 ground_truth[image_path] = true_text
 
-        # Загрузка предсказаний от straight_recognition
+        # Загружаем предсказания от straight_recognition
         straight_predictions = {}
         with open(straight_predictions_file, 'r') as file:
             for line in file:
@@ -112,7 +110,7 @@ class ImageRecognizer:
                 prediction_text = parts[1].strip()
                 straight_predictions[image_path] = prediction_text
 
-        # Загрузка предсказаний от easyocr_recognition
+        # Загружаем предсказания от easyocr_recognition
         easyocr_predictions = {}
         with open(easyocr_predictions_file, 'r') as file:
             for line in file:
@@ -140,14 +138,20 @@ recognition_type = 'easyocr'  #straight   easyocr
 validation_type = 'full_match'  # или другой способ оценки
 
 accuracy = recognizer.test_recognition(recognition_type, validation_type, image_paths, ground_truth_file)
-print(f"Accuracy for {recognition_type} recognition: {accuracy * 100:.2f}")
+print(f"Точность для {recognition_type} распознавания: {accuracy * 100:.2f}%")
+
+recognition_type = 'straight'  #straight   easyocr
+validation_type = 'full_match'  # или другой способ оценки
+
+accuracy = recognizer.test_recognition(recognition_type, validation_type, image_paths, ground_truth_file)
+print(f"Точность для {recognition_type} распознавания: {accuracy * 100:.2f}%")
 
 
-print("metod_2")
+print("Метод 2")
 straight_predictions_file = 'straight_predictions.txt'
 easyocr_predictions_file = 'easyocr_predictions.txt'
 
 straight_accuracy, easyocr_accuracy = recognizer.compare_predictions(ground_truth_file, straight_predictions_file, easyocr_predictions_file)
 
-print(f"Straight Recognition Accuracy: {straight_accuracy * 100:.2f}%")
-print(f"EasyOCR Recognition Accuracy: {easyocr_accuracy * 100:.2f}%")
+print(f"Точность распознавания Straight: {straight_accuracy * 100:.2f}%")
+print(f"Точность распознавания EasyOCR: {easyocr_accuracy * 100:.2f}%")

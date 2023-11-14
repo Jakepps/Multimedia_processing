@@ -99,19 +99,24 @@ class ImageRecognizer:
 
                 original_image = original_image.convert('RGB')
 
+                # Сохраняем оригинальное изображение
+                original_image_path = os.path.join(augmented_path, f"{os.path.splitext(image_path)[0]}_original.jpg")
+                original_image.save(original_image_path)
+
+                # Поворачиваем и сохраняем повернутые изображения
                 for angle in range(-20, 21):
                     rotated_image = original_image.rotate(angle)
                     rotated_image_path = os.path.join(augmented_path, f"{os.path.splitext(image_path)[0]}_{angle}.jpg")
                     rotated_image.save(rotated_image_path)
 
     def test_augmented_dataset(self, rec_type, val_type, augmented_path, ground_truth_file):
-            # Получяем список всех изображений в аугментированном датасете
-            augmented_images = [os.path.join(augmented_path, image) for image in os.listdir(augmented_path)]
+        # Получяем список всех изображений в аугментированном датасете
+        augmented_images = [os.path.join(augmented_path, image) for image in os.listdir(augmented_path)]
 
-            # Тестируем распознавание на аугментированном датасете
-            accuracy = self.test_recognition(rec_type, val_type, augmented_images, ground_truth_file)
+        # Тестируем распознавание на аугментированном датасете
+        accuracy = self.test_recognition(rec_type, val_type, augmented_images, ground_truth_file)
 
-            return accuracy
+        return accuracy
 
     # СРАВНИВАЕМ ПОСЛОВНО
     def compare_predictions_wordwise(self, ground_truth_file, straight_predictions_file, easyocr_predictions_file):
@@ -180,29 +185,27 @@ ground_truth_file = 'ground_truth2.txt'
 recognition_type = 'easyocr'  #straight   easyocr
 validation_type = 'full_match'
 
-# Аугментировать датасет
-recognizer.augment_dataset(original_dataset_path, augmented_dataset_path)
-
 # Тестировать распознавание на аугментированном датасете
 accuracy_augmented = recognizer.test_augmented_dataset(recognition_type, validation_type, augmented_dataset_path, ground_truth_file)
 print(f"Точность для {recognition_type} распознавание по дополненному набору данных: {accuracy_augmented * 100:.2f}%")
 
-recognition_type = 'straight'  #straight   easyocr
-validation_type = 'full_match'
+# Получить список всех изображений в аугментированном датасете
+augmented_images = [os.path.join(augmented_dataset_path, image) for image in os.listdir(augmented_dataset_path)]
 
-# Аугментировать датасет
-recognizer.augment_dataset(original_dataset_path, augmented_dataset_path)
+# Применить Tesseract OCR ко всем изображениям в аугментированном датасете
+annotations_file_augmented = 'annotations_augmented.txt'
 
-# Тестировать распознавание на аугментированном датасете
-accuracy_augmented = recognizer.test_augmented_dataset(recognition_type, validation_type, augmented_dataset_path, ground_truth_file)
-print(f"Точность для {recognition_type} распознавание по дополненному набору данных: {accuracy_augmented * 100:.2f}%")
-
-
+# Пройти по каждому аугментированному изображению и применить Tesseract OCR
+with open(annotations_file_augmented, 'w', encoding='utf-8', errors='replace') as file:
+    for image_path in augmented_images:
+        img = Image.open(image_path)
+        text = pytesseract.image_to_string(img, config=recognizer.tesseract_config)
+        file.write(f"{image_path}: {text.strip()}\n")
 
 print("Метод 2")
 ground_truth_file = 'ground_truth2.txt'
-straight_predictions_file = 'straight_predictions2.txt'
-easyocr_predictions_file = 'easyocr_predictions2.txt'
+straight_predictions_file = 'annotations_augmented_straight.txt'
+easyocr_predictions_file = 'annotations_augmented.txt'
 
 # Сравнение по словам
 straight_accuracy_wordwise, easyocr_accuracy_wordwise = recognizer.compare_predictions_wordwise(
