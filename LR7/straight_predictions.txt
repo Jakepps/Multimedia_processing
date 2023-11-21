@@ -1,6 +1,11 @@
-dataset/1.jpg: Hello, how are you
-dataset/2.jpg: Hello
+dataset/1.jpg: SEMNAHOrG PomMnac,
+dataset/2.jpg: py *ey cloudlesg
 dataset/3.jpg: Beautiful
-dataset/4.jpg: Red book
-dataset/5.jpg: Pencil
-dataset/6.jpg: My name is Artem
+dataset/4.jpg: eenuyuu AUwiy,
+dataset/5.jpg: “/0aked pact?
+dataset/6.jpg: pot OH Baly SHay
+dataset/7.jpg: eenuyuu AUwiy,
+dataset/8.jpg: Red book
+dataset/9.jpg: 
+dataset/10.jpg: CO ale
+dataset/11.jpg: “/0aked pact?

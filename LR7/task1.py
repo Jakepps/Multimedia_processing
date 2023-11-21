@@ -128,7 +128,7 @@ class ImageRecognizer:
 
 # Пример использования
 recognizer = ImageRecognizer()
-image_paths = ['dataset/1.jpg', 'dataset/2.jpg', 'dataset/3.jpg', 'dataset/4.jpg', 'dataset/5.jpg', 'dataset/6.jpg']
+image_paths = ['dataset/1.jpg', 'dataset/2.jpg', 'dataset/3.jpg', 'dataset/4.jpg', 'dataset/5.jpg', 'dataset/6.jpg', 'dataset/7.jpg', 'dataset/8.jpg', 'dataset/9.jpg', 'dataset/10.jpg','dataset/11.jpg']
 ground_truth_file = 'ground_truth.txt'
 
 # Tesseract

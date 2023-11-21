@@ -235,16 +235,3 @@ ground_truth = 'ground_truth2.txt'
 predictions_postprocessed = recognizer.postprocess_tesseract_recognition(augmented_images)
 accuracy_postprocessed = recognizer.evaluate_accuracy(ground_truth, predictions_postprocessed)
 print(f"Точность для {recognition_type} распознавание с постобработкой на аугментированном наборе данных 2: {accuracy_postprocessed * 100+3.06:.2f}%")
-
-# print("Метод 2")
-# ground_truth_file = 'ground_truth2.txt'
-# straight_predictions_file = 'annotations_augmented_straight.txt'
-# easyocr_predictions_file = 'annotations_augmented.txt'
-
-# # Сравнение по словам
-# straight_accuracy_wordwise, easyocr_accuracy_wordwise = recognizer.compare_predictions_wordwise(
-#     ground_truth_file, straight_predictions_file, easyocr_predictions_file
-# )
-
-# print(f"Точность распознавания дословно Straight: {straight_accuracy_wordwise * 100:.2f}%")
-# print(f"Точность распознавания дословно EasyOCR: {easyocr_accuracy_wordwise * 100:.2f}%")

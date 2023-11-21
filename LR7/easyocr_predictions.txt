@@ -1,6 +1,11 @@
-dataset/1.jpg: Hello, how are you
-dataset/2.jpg: Hello
+dataset/1.jpg: родилась земляного
+dataset/2.jpg: cloudless [дружбу
 dataset/3.jpg: Beautiful
-dataset/4.jpg: Red book
-dataset/5.jpg: Pencil
-dataset/6.jpg: My name is Artem
+dataset/4.jpg: eenuчuч nuwuл'
+dataset/5.jpg: растаял) croaked
+dataset/6.jpg: он ваш знак Вот
+dataset/7.jpg: eenuчuч nuwuл'
+dataset/8.jpg: Red book
+dataset/9.jpg: гиИдов ллавки|
+dataset/10.jpg: нанял охотно
+dataset/11.jpg: растаял) croaked
