@@ -140,14 +140,7 @@ def test_recognition(rec_type, val_type, dataset_name, show_img=False):
 
     with open(
         str(
-            rel_path(
-                "results_trained_"
-                + val_type
-                + "_"
-                + rec_type
-                + "_"
-                + dataset_name
-                + ".txt"
+            rel_path("results_trained_" + val_type + "_" + rec_type + "_" + dataset_name + ".txt"
             )
         ),
         "w",

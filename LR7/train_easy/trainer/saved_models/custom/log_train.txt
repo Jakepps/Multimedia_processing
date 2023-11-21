@@ -1,0 +1,36 @@
+[200/30000] Train loss: 0.93147, Valid loss: 0.00115, Elapsed_time: 144.02614
+Current_accuracy : 100.000, Current_norm_ED  : 1.0000
+Best_accuracy    : 100.000, Best_norm_ED     : 1.0000
+[200/300] Train loss: 0.58959, Valid loss: 0.00013, Elapsed_time: 150.91126
+Current_accuracy : 100.000, Current_norm_ED  : 1.0000
+Best_accuracy    : 100.000, Best_norm_ED     : 1.0000
+[300/300] Train loss: 0.43422, Valid loss: 0.00005, Elapsed_time: 230.04569
+Current_accuracy : 100.000, Current_norm_ED  : 1.0000
+Best_accuracy    : 100.000, Best_norm_ED     : 1.0000
+[100/100] Train loss: 1.33891, Valid loss: 0.00055, Elapsed_time: 132.89600
+Current_accuracy : 100.000, Current_norm_ED  : 1.0000
+Best_accuracy    : 100.000, Best_norm_ED     : 1.0000
+[100/100] Train loss: 3.03260, Valid loss: 0.22277, Elapsed_time: 89.08988
+Current_accuracy : 77.778, Current_norm_ED  : 0.9364
+Best_accuracy    : 77.778, Best_norm_ED     : 0.9364
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+дружбу cloudless          | друбуcoudless             | 0.0082	False
+--------------------------------------------------------------------------------
+[100/100] Train loss: 1.36077, Valid loss: 0.01281, Elapsed_time: 89.32619
+Current_accuracy : 100.000, Current_norm_ED  : 1.0000
+Best_accuracy    : 100.000, Best_norm_ED     : 1.0000
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+croaked растаял           | croaked растаял           | 0.3334	True
+--------------------------------------------------------------------------------
+[100/100] Train loss: 1.11858, Valid loss: 0.00061, Elapsed_time: 74.72180
+Current_accuracy : 100.000, Current_norm_ED  : 1.0000
+Best_accuracy    : 100.000, Best_norm_ED     : 1.0000
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+вот он ваш знак           | вот он ваш знак           | 0.5414	True
+--------------------------------------------------------------------------------
