@@ -8,7 +8,7 @@ cap = cv2.VideoCapture(0)
 net = cv2.dnn.readNetFromDarknet('resources_for_yolo/yolov3-face.cfg','resources_for_yolo/yolov3-wider_16000.weights')
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-res = cv2.VideoWriter('result/yolo_output_1.avi', fourcc, 20.0, (640, 480))
+res = cv2.VideoWriter('result/yolo_output.avi', fourcc, 20.0, (640, 480))
 
 frame_count = 0
 prev_frame_time = 0

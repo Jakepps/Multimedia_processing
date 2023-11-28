@@ -7,7 +7,7 @@ cap = cv2.VideoCapture(0)
 face_cascade = cv2.CascadeClassifier('sources_for_haarscade/haarcascade_frontalface_default.xml')
 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('result/haarscade_output_1.avi', fourcc, 20.0, (640, 480))
+out = cv2.VideoWriter('result/haarscade_output.avi', fourcc, 20.0, (640, 480))
 
 # задание переменных для подсчета частоты потери изображения
 frame_count = 0
