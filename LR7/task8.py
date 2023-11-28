@@ -67,12 +67,12 @@ def test_recognition(rec_type, val_type, dataset_name, show_img=False):
                 )
             result = "".join([sym_data.split(" ")[0] for sym_data in boxes.split("\n")])
         elif rec_type == "filtered_recognition":
-            result = pytesseract.image_to_string(img, lang="rus+eng")
+            result = pytesseract.image_to_string(img, lang="test4")
 
             groud_truth = clear_str(groud_truth)
             result = clear_str(result)
         elif rec_type == "avg_of_aug":
-            result = pytesseract.image_to_string(img, lang="rus+eng")
+            result = pytesseract.image_to_string(img, lang="test4")
 
             img_name_wo_aug = img_file.name.split("_")[0]
             if img_name_wo_aug in dict_for_avg_of_aug_dataset:

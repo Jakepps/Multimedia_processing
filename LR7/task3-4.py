@@ -42,7 +42,7 @@ def test_recognition(rec_type, val_type, dataset_name, show_img=False):
             labels[row[0]] = row[1]
 
     img_files = list(
-        pathlib.Path(str(rel_path(dataset_name + "/samples/"))).glob("*.jpg")
+        pathlib.Path(str(rel_path(dataset_name + "/"))).glob("*.jpg")
     )
 
     for img_file in img_files:
@@ -132,10 +132,10 @@ def test_recognition(rec_type, val_type, dataset_name, show_img=False):
             images_count += 1
 
     if val_type == "binary_correct":
-        output_str += f"Статистика: угадано {correct_guesses} / {images_count} капч"
+        output_str += f"Угадано {correct_guesses} / {images_count} капч"
     elif val_type == "similarity":
         output_str += (
-            f"Статистика: средняя схожесть: {statistics.fmean(similarities) * 100}%"
+            f"Средняя схожесть: {statistics.fmean(similarities) * 100}%"
         )
 
     with open(

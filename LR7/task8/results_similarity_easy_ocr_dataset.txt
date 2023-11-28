@@ -2,12 +2,12 @@
 10.jpg | охотно нанял | охотно нанял
 11.jpg | croaked растаял | croaked растаял)
 2.jpg | дружбу cloudless | [дружбу cloudless
-3.jpg | застыло безопасно | Beautiful
+3.jpg | Beautiful | Beautiful
 4.jpg | величии лишил | eenuчuч nuwuл'
 5.jpg | croaked растаял | croaked растаял)
 6.jpg | Вот он ваш знак | Вот он ваш знак
 7.jpg | величии лишил | eenuчuч nuwuл'
-8.jpg | серьги корону | Red book
+8.jpg | Red book | Red book
 9.jpg | гидов лавки | гиИдов ллавки|
 
-Средняя схожесть: 63.896064400463224%
+Средняя схожесть: 81.21208171648054%
