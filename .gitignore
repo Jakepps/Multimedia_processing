@@ -159,3 +159,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 .DS_Store
+LR8/resources_for_yolo/yolov3-wider_16000.weights
+LR8/result/haarscade_output_1.avi
+LR8/result/yolo_output_1.avi

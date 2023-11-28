@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import time
 
 cap = cv2.VideoCapture(0)
 
@@ -9,10 +10,20 @@ net = cv2.dnn.readNetFromDarknet('resources_for_yolo/yolov3-face.cfg','resources
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 res = cv2.VideoWriter('result/yolo_output_1.avi', fourcc, 20.0, (640, 480))
 
+frame_count = 0
+prev_frame_time = 0
+
+start_time = time.time()
+
 while True:
     ret, frame = cap.read()
 
     # получение списка обнаруженных лиц
+    frame_count += 1
+
+    current_time = time.time()
+    time_diff = current_time - prev_frame_time
+
     blob = cv2.dnn.blobFromImage(frame, 1 / 255, (415, 415), [0, 0, 0], True, crop=False)
     net.setInput(blob)
     outs = net.forward(net.getUnconnectedOutLayersNames())
@@ -33,10 +44,22 @@ while True:
                 cv2.rectangle(frame, (left, top), (left + width, top + height), (0, 255, 0), 2)
 
     res.write(frame)
+
+    if time_diff > 1:
+        fps = frame_count / time_diff
+        print(f"Частота потери изображения: {1 / ((current_time - prev_frame_time) / frame_count):.0f} кадр(-a)(-ов)/секунду")
+        prev_frame_time = current_time
+        frame_count = 0
+
     cv2.imshow('Video', frame)
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
+
+end_time = time.time()
+
+print(f"Время работы метода: {end_time - start_time:.5f} секунд")
+print(f"Скорость обработки: {cap.get(cv2.CAP_PROP_FPS):.0f} fps")
 
 cap.release()
 res.release()
