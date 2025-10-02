@@ -1,4 +1,3 @@
-import tensorflow as tf
 import numpy as np
 import keras
 from keras.datasets import mnist
@@ -25,8 +24,6 @@ x_test = x_test.reshape(x_test.shape[0], 784)
 y_train = keras.utils.to_categorical(y_train, 10)
 y_test = keras.utils.to_categorical(y_test, 10)
 
-
-
 # cоздаем последовательную модель (слои нейронки будут добавляться один за другим в последовательном порядке.)
 model = Sequential()
 
@@ -48,8 +45,6 @@ model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['ac
 # tensorboard --logdir=./logs
 tensorboard_callback = TensorBoard(log_dir='./logs', histogram_freq=1, write_graph=True, write_images=True)
 model.fit(x_train, y_train, epochs=3, batch_size=128, callbacks=[tensorboard_callback])
-
-#model.fit(x_train, y_train, epochs=3, batch_size=128)
 
 # оцениваем точность модели на основе тестовых данных
 accuracy = model.evaluate(x_test,y_test)
